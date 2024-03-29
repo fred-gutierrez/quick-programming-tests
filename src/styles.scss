@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+// Font Awesome Pro Icons
+@use "assets/fontawesome/css/all.min.css";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+html,
+body {
+  font-family: 'Inter';
+  color-scheme: light dark
+}
