@@ -2,6 +2,8 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 2em 3.5em;
+  background-color: #161616;
+  position: sticky;
 }
 
 .brand {
@@ -14,6 +16,18 @@ nav {
 
 @media (min-width: 576px) {
   nav {
+    padding: 2em 6em;
+  }
+}
+
+@media (min-width: 768px) {
+  nav {
     padding: 2em 10em;
+  }
+}
+
+@media (min-width: 1400px) {
+  nav {
+    padding: 2em 16em;
   }
 }
