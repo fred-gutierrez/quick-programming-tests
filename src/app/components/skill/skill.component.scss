@@ -1,0 +1,40 @@
+section {
+  background-color: #393939;
+  border-radius: 10px;
+  max-width: 1000px;
+  margin: 30px auto;
+  display: flex;
+}
+
+.card {
+  background-color: #2F2F2F;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.btn-container {
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: 150px auto;
+  gap: 10px;
+
+  button {
+    width: 150px;
+    border: none;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 15px;
+  }
+
+  .conceptual-btn {
+    background-color: #606060;
+    color: #fff;
+  }
+
+  .technical-btn {
+    background-color: #CECECE;
+    color: #000;
+  }
+}
