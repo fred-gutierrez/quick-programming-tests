@@ -1,17 +1,24 @@
 <section>
-  <div class="card" *ngFor="let item of skills">
-    <h1 class="name">{{ item.skill_name }}</h1>
-    <div class="stats-container">
+  <ng-container *ngIf="skills">
+    <div class="card" *ngFor="let item of skills">
+      <h1 class="name">{{ item.skill_name }}</h1>
+      <div class="stats-container">
+        <p>Completed <b>{{ item.completed }}</b> times</p>
+        <p>Best technical score: <b>{{ item.bestTechnicalScore }}</b>.</p>
+        <p>Best conceptual score: <b>{{ item.bestConceptualScore }}</b>.</p>
+        <p>Correct unique questions: <b>{{ item.correctUniqueQuestions }}%</b>.</p>
 
-      <p>Completed <b>{{ item.completed }}</b> times</p>
-      <p>Best technical score: <b>{{ item.bestTechnicalScore }}</b>.</p>
-      <p>Best conceptual score: <b>{{ item.bestConceptualScore }}</b>.</p>
-      <p>Correct unique questions: <b>{{ item.correctUniqueQuestions }}%</b>.</p>
+      </div>
+      <div class="btn-container">
+        <button class="conceptual-btn" type="button">Conceptual</button>
+        <button class="technical-btn" type="button">Technical</button>
+      </div>
+    </div>
+  </ng-container>
 
+  <ng-container *ngIf="!skills.length">
+    <div class="server-error">
+      Server had an error, try reloading.
     </div>
-    <div class="btn-container">
-      <button class="conceptual-btn" type="button">Conceptual</button>
-      <button class="technical-btn" type="button">Technical</button>
-    </div>
-  </div>
+  </ng-container>
 </section>

@@ -18,5 +18,4 @@ export class SkillComponent {
   async ngOnInit() {
     this.skills = await this.skillsService.getAll();
   }
-
 }
