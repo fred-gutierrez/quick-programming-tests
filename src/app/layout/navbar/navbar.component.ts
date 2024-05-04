@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,17 @@ import { Component } from '@angular/core';
 })
 
 export class NavbarComponent {
-  onLogin() {
-    alert("Brah")
+  constructor(private authService: AuthService) { }
+
+  googleAuth() {
+    this.authService.googleAuth().subscribe({
+      next: (url: string) => {
+        window.open(url, "_self")
+      },
+      error: (error: any) => {
+        console.error("Error opening Google Auth: ", error)
+      }
+    })
+
   }
 }

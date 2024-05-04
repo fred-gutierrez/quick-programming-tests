@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { SkillsService } from '../../services/skills.service';
 
 @Component({
@@ -11,11 +11,18 @@ import { SkillsService } from '../../services/skills.service';
 })
 
 export class SkillComponent {
-  skillsService = inject(SkillsService)
-
   skills: any[] = [];
 
-  async ngOnInit() {
-    this.skills = await this.skillsService.getAll();
+  constructor(private skillsService: SkillsService) { }
+
+  ngOnInit() {
+    this.skillsService.getAll().subscribe({
+      next: (data: any[]) => {
+        this.skills = data
+      },
+      error: (error) => {
+        console.error("Error fetching skills: ", error)
+      }
+    });
   }
 }

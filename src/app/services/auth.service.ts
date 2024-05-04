@@ -6,12 +6,12 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 
-export class SkillsService {
+export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   private baseUrl = 'http://localhost:3000'
 
-  getAll(): Observable<any[]> {
-    return this.httpClient.get<any[]>(`${this.baseUrl}/api/skills`)
+  googleAuth(): Observable<string> {
+    return this.httpClient.get<string>(`${this.baseUrl}/auth/google/callback`)
   }
 }
