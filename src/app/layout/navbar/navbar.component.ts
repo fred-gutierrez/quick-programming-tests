@@ -13,14 +13,7 @@ export class NavbarComponent {
   constructor(private authService: AuthService) { }
 
   googleAuth() {
-    this.authService.googleAuth().subscribe({
-      next: (url: string) => {
-        window.open(url, "_self")
-      },
-      error: (error: any) => {
-        console.error("Error opening Google Auth: ", error)
-      }
-    })
-
+    const url = this.authService.googleAuthUrl()
+    window.open(url, "_blank")
   }
 }
