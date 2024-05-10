@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { StateService } from '../../services/state.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +10,13 @@ import { AuthService } from '../../services/auth.service';
 })
 
 export class NavbarComponent {
-  constructor(private authService: AuthService) { }
+  isLoginOpen!: boolean;
 
-  googleAuth() {
-    const url = this.authService.googleAuthUrl()
-    window.open(url, "_blank")
+  constructor(private stateService: StateService) {
+    this.stateService.isLoginOpen$.subscribe(isOpen => this.isLoginOpen = isOpen)
+  }
+
+  toggleLogin() {
+    this.stateService.toggleLogin()
   }
 }
