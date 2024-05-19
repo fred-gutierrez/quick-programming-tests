@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class StateService {
-  private isLoginOpenSubject = new BehaviorSubject<boolean>(false)
+  private isLoginOpenSubject = new BehaviorSubject<boolean>(true)
   isLoginOpen$ = this.isLoginOpenSubject.asObservable()
 
   constructor() { }

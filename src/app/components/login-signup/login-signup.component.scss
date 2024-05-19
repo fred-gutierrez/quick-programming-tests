@@ -7,21 +7,66 @@
   border-radius: 20px;
   width: 450px;
   height: 500px;
-  background-color: #101010;
+  background-color: #222222;
+  border: 3px solid #555555;
 }
 
-.close-btn {
+#close-btn {
   position: absolute;
+  text-align: center;
+  font-size: 1.3em;
+  padding: 12px 0 5px 0;
   top: 10px;
   right: 10px;
+  cursor: pointer;
+  width: 50px;
+  height: 30px;
+
+  &:hover {
+    background-color: #333333;
+    border-radius: 30px;
+  }
 }
 
 h2 {
   text-align: center;
   font-size: 2em;
+  margin: 30px 0;
 }
 
 h3 {
   text-align: center;
   font-weight: 400;
 }
+
+.active {
+  font-weight: 600;
+}
+
+.selection-container {
+  margin: 0 20px;
+
+  .selection-menu {
+    span {
+      cursor: pointer;
+    }
+
+    #signIn-btn {
+      margin: 0 15px 0 0;
+    }
+
+    hr {
+      margin: 3px 0;
+      border-radius: 100px;
+      height: 1px;
+      background-color: #555555;
+      border: 1px solid #555555;
+    }
+  }
+}
+
+form {}
+
+.newAccount-form {}
+
+.signIn-form {}
