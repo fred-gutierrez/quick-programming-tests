@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { StateService } from '../../services/state.service';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-signup',
@@ -15,15 +15,19 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class LoginSignupComponent {
   isNewAccountSelected = false
   isLoginOpen!: boolean;
-  accountForm: FormGroup;
+  accountForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl('')
+  });
 
   constructor(
     private authService: AuthService,
     private stateService: StateService,
-    private fb: FormBuilder
+    private formBuilder: FormBuilder
   ) {
     this.stateService.isLoginOpen$.subscribe(isOpen => this.isLoginOpen = isOpen)
-    this.accountForm = this.fb.group({
+
+    this.accountForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", [
         Validators.required,
@@ -56,9 +60,7 @@ export class LoginSignupComponent {
     window.open(url, "_blank")
   }
 
-  createAccountSubmit() {
-    if (this.accountForm.valid) {
-      console.log("Nice", this.accountForm.value)
-    }
+  newAccountSubmit() {
+    console.log("Nice", this.accountForm.value)
   }
 }

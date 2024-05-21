@@ -29,23 +29,21 @@
       </form>
 
       <!-- Create New Account -->
-      <form *ngIf="isNewAccountSelected" id="newAccount-form" [formGroup]="accountForm"
-        (ngSubmit)="createAccountSubmit()">
-        <div *ngIf="accountForm.get('password').invalid && accountForm.get('password').touched" class="error">
-          Password must be at least 8 characters long, include at least 1 special character, 1 lowercase letter, and 1
-          uppercase letter.
-        </div>
-
+      <form *ngIf="isNewAccountSelected" id="newAccount-form" [formGroup]="accountForm" (ngSubmit)="newAccountSubmit()">
         <div class="input-group">
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email" formControlName="email">
         </div>
         <div class="input-group">
           <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" formControlName="password">
         </div>
+        <p>
+          Password must be at least 8 characters long, include at least 1 special character, 1 lowercase letter, and 1
+          uppercase letter.
+        </p>
         <div class="actions">
-          <button type="submit" [disabled]="accountForm.valid">Create Account</button>
+          <button type="submit" [disabled]="!accountForm.valid">Create Account</button>
         </div>
       </form>
     </div>
