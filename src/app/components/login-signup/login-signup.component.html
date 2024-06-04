@@ -1,6 +1,6 @@
 <ng-container *ngIf="isLoginOpen">
   <div class="main-container">
-    <span (click)="toggleLogin()" id="close-btn" class="fa-solid fa-x"></span>
+    <span (click)="toggleLoginWindow()" id="close-btn" class="fa-solid fa-x"></span>
     <h2>Welcome!</h2>
 
     <div class="forms-container">
@@ -52,6 +52,9 @@
 
     <div>
       <h3>Or connect with:</h3>
+      <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
+        data-shape="rectangular" data-logo_alignment="left">
+      </div>
     </div>
   </div>
 </ng-container>

@@ -4,13 +4,14 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class StateService {
   private isLoginOpenSubject = new BehaviorSubject<boolean>(true)
   isLoginOpen$ = this.isLoginOpenSubject.asObservable()
 
   constructor() { }
 
-  toggleLogin() {
+  toggleLoginWindow() {
     const currentState = this.isLoginOpenSubject.getValue();
     this.isLoginOpenSubject.next(!currentState)
   }

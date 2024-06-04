@@ -37,6 +37,7 @@ export class LoginSignupComponent {
     })
   }
 
+  // UI
   signInSelect() {
     this.isNewAccountSelected = false
 
@@ -51,10 +52,11 @@ export class LoginSignupComponent {
     document.getElementById("signIn-btn")?.classList.remove("active")
   }
 
-  toggleLogin() {
-    this.stateService.toggleLogin()
+  toggleLoginWindow() {
+    this.stateService.toggleLoginWindow()
   }
 
+  // Auth
   googleAuth() {
     const url = this.authService.googleAuthUrl()
     window.open(url, "_blank")

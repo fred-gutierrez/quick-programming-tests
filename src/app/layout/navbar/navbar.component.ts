@@ -16,7 +16,7 @@ export class NavbarComponent {
     this.stateService.isLoginOpen$.subscribe(isOpen => this.isLoginOpen = isOpen)
   }
 
-  toggleLogin() {
-    this.stateService.toggleLogin()
+  toggleLoginWindow() {
+    this.stateService.toggleLoginWindow()
   }
 }
