@@ -1,3 +1,4 @@
+
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
@@ -41,5 +42,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Custom
 .env
