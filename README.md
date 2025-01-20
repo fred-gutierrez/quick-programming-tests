@@ -14,5 +14,3 @@ Sup! This is a new project I'm making to help myself and others with some quick 
 - Cors
 - Nodejs
 - Express
-
-You can visit the backend [here](https://github.com/fred-gutierrez/qpt-api).
