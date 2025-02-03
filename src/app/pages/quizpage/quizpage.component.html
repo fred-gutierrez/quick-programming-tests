@@ -1,19 +1,15 @@
 <section>
-  <h1>Welcome to the questions!</h1>
-  <p></p>
+  <h1>{{ quizSkillName }} Conceptual Test</h1>
 
   <ng-container *ngIf="quizData">
-    <div class="card" *ngFor="let item of quizData">
-      <h1 class="name">{{ item.question }}</h1>
-      <div class="stats-container">
-        <p>Completed <b>{{ item.completed }}</b> times</p>
-        <p>Best technical score: <b>{{ item.bestTechnicalScore }}</b>.</p>
-        <p>Best conceptual score: <b>{{ item.bestConceptualScore }}</b>.</p>
-        <p>Correct unique questions: <b>{{ item.correctUniqueQuestions }}%</b>.</p>
-      </div>
-      <div class="btn-container">
-        <button class="conceptual-btn" type="button">Conceptual</button>
-        <button class="technical-btn" type="button">Technical</button>
+    <div class="quiz-container" *ngFor="let item of quizData; let i = index">
+      <h2 class="quiz-number-title">Question {{ i + 1 }}</h2>
+      <h3 class="quiz-question">{{ item.question }}</h3>
+      <div class="quiz-options-container">
+        <button type="button" class="quiz-option" *ngFor="let option of item.options; let i = index"
+          (click)="selectOption()">
+          {{ option.option }}
+        </button>
       </div>
     </div>
   </ng-container>

@@ -11,4 +11,16 @@ import quizData from "../../data/quizData.json"
 })
 export class QuizpageComponent {
   quizData: any[] = quizData
+  questionInView: number = 0
+  quizSkillName: string = "JavaScript"
+
+
+  selectQuestion(questionNumber: number) {
+    for (let item in quizData) {
+
+    }
+  }
+  selectOption() {
+
+  }
 }

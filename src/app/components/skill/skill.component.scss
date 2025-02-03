@@ -22,28 +22,39 @@ section {
   max-height: 170px;
 }
 
-.btn-container {
+.button-container {
   padding-top: 10px;
   display: grid;
-  grid-template-columns: 150px auto;
+  grid-template-columns: 100% auto;
   gap: 10px;
 
-  button {
-    width: 150px;
+  a {
     border: none;
     padding: 20px;
     font-weight: bold;
     font-size: 16px;
     border-radius: 15px;
     cursor: pointer;
+    text-align: center;
+    transition: background-color .3s, color .3s;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
 
-  .conceptual-btn {
+  .button-conceptual {
     background-color: #606060;
     color: #fff;
+
+    &:hover {
+      background-color: #CECECE;
+      color: #000;
+    }
   }
 
-  .technical-btn {
+  .button-technical {
     background-color: #CECECE;
     color: #000;
   }

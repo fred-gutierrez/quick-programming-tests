@@ -17,6 +17,22 @@ body {
   color-scheme: light dark;
 }
 
+section {
+  padding: 18px;
+
+  @media (min-width: 768px) {
+    padding: 30px 4em;
+  }
+
+  @media (min-width: 992px) {
+    padding: 40px 6em;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 40px 8em;
+  }
+}
+
 
 // Boilerplate //
 
