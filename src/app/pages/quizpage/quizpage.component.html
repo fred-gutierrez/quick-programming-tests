@@ -1,16 +1,37 @@
 <section>
   <h1>{{ quizSkillName }} Conceptual Test</h1>
 
-  <ng-container *ngIf="quizData">
-    <div class="quiz-container" *ngFor="let item of quizData; let i = index">
-      <h2 class="quiz-number-title">Question {{ i + 1 }}</h2>
-      <h3 class="quiz-question">{{ item.question }}</h3>
+  <ng-container *ngIf="quizData && quizData.length > 0 && showScore === false">
+    <div class="quiz-container">
+      <h2 class="quiz-number-title">Question {{ currentQuestionIndex + 1 }}</h2>
+      <h3 class="quiz-question">{{ quizData[currentQuestionIndex].question }}</h3>
       <div class="quiz-options-container">
-        <button type="button" class="quiz-option" *ngFor="let option of item.options; let i = index"
-          (click)="selectOption()">
+        <button type="button" class="quiz-option"
+          *ngFor="let option of quizData[currentQuestionIndex].options; let i = index"
+          (click)="selectOption(option.correct, i)"
+          [ngClass]="{'selected': selectedAnswers[currentQuestionIndex] === i}">
           {{ option.option }}
         </button>
       </div>
+    </div>
+
+    <div class="pagination">
+      <button type="button" class="pagination-button previous" (click)="previousQuestion()">Previous</button>
+
+      <ng-container *ngFor="let question of quizData; let i = index">
+        <button type="button" class="pagination-button number" (click)="selectQuestionIndex(i)"
+          [ngClass]="{ 'active': currentQuestionIndex === i }">
+          {{ i + 1 }}
+        </button>
+      </ng-container>
+
+      <button type="button" class="pagination-button next" (click)="nextQuestion()">Next</button>
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <div *ngIf="showScore">
+      <h2>Your final score is: {{ finalScore }} / {{ quizData.length }} </h2>
     </div>
   </ng-container>
 </section>
