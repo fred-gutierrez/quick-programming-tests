@@ -3,7 +3,13 @@
 
   <ng-container *ngIf="quizData && quizData.length > 0 && showScore === false">
     <div class="quiz-container">
-      <h2 class="quiz-number-title">Question {{ currentQuestionIndex + 1 }}</h2>
+      <div class="quiz-number-complete-container">
+        <h2 class="quiz-number-title">Question {{ currentQuestionIndex + 1 }}</h2>
+        <div>
+          <span class="quiz-counter"> {{ selectedAnswersCount }}/{{ selectedAnswers.length }}</span>
+          <button class="quiz-complete-button" (click)="calculateScore()">Complete</button>
+        </div>
+      </div>
       <h3 class="quiz-question">{{ quizData[currentQuestionIndex].question }}</h3>
       <div class="quiz-options-container">
         <button type="button" class="quiz-option"
@@ -31,7 +37,7 @@
 
   <ng-container>
     <div *ngIf="showScore">
-      <h2>Your final score is: {{ finalScore }} / {{ quizData.length }} </h2>
+      <h2>Your final score is: {{ finalScore }} / {{ quizData.length * 10 }} </h2>
     </div>
   </ng-container>
 </section>

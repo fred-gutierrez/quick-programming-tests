@@ -1,7 +1,8 @@
 header {
   display: flex;
   justify-content: space-between;
-  padding: 2em 3.5em;
+  padding-top: 2em;
+  padding-bottom: 2em;
   background-color: #161616;
   position: sticky;
 }
@@ -13,22 +14,4 @@ header {
 .login {
   cursor: pointer;
   font-weight: 500;
-}
-
-@media (min-width: 576px) {
-  header {
-    padding: 2em 6em;
-  }
-}
-
-@media (min-width: 768px) {
-  header {
-    padding: 2em 10em;
-  }
-}
-
-@media (min-width: 1400px) {
-  header {
-    padding: 2em 16em;
-  }
 }

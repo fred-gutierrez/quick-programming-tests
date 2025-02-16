@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import quizData from "../../data/quizData.json"
+import { get } from 'node:http';
 
 @Component({
   selector: 'app-quizpage',
@@ -14,7 +15,6 @@ export class QuizpageComponent {
   currentQuestionIndex: number = 0;
   quizSkillName: string = "JavaScript";
   selectedAnswers: number[] = [];
-
   showScore: boolean = false;
   finalScore: number = 0;
 
@@ -32,6 +32,11 @@ export class QuizpageComponent {
     this.selectedAnswers = new Array(this.quizData.length).fill(null);
   }
 
+  // Getter to count non-null selected answer
+  get selectedAnswersCount(): number {
+    return this.selectedAnswers.filter(answer => answer !== null).length;
+  }
+
   selectOption(isCorrect: boolean, optionIndex: number): void {
     this.selectedAnswers[this.currentQuestionIndex] = optionIndex;
   }
@@ -42,6 +47,7 @@ export class QuizpageComponent {
       this.currentQuestionIndex--
     }
   }
+  // Question Specific
   selectQuestionIndex(selectedQuestionIndex: number): void {
     if (this.currentQuestionIndex >= 0 && selectedQuestionIndex < this.quizData.length) {
       this.currentQuestionIndex = selectedQuestionIndex;
@@ -60,7 +66,7 @@ export class QuizpageComponent {
       const selectedOptionIndex = this.selectedAnswers[index];
 
       if (selectedOptionIndex !== -1 && question.options[selectedOptionIndex].correct) {
-        return score + 1
+        return score + 10
       }
 
       return score
