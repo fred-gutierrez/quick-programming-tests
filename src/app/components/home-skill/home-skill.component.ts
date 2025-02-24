@@ -3,14 +3,14 @@ import { Component } from '@angular/core';
 import { SkillsService } from '../../services/skills.service';
 
 @Component({
-  selector: 'app-skill',
+  selector: 'app-home-skill',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './skill.component.html',
-  styleUrl: './skill.component.scss'
+  templateUrl: './home-skill.component.html',
+  styleUrl: './home-skill.component.scss'
 })
 
-export class SkillComponent {
+export class HomeSkillComponent {
   skills: any[] = [];
 
   constructor(private skillsService: SkillsService) { }
@@ -18,10 +18,10 @@ export class SkillComponent {
   ngOnInit() {
     this.skillsService.getAll().subscribe({
       next: (data: any[]) => {
-        this.skills = data
+        this.skills = data;
       },
       error: (error) => {
-        console.error("Error fetching skills: ", error)
+        console.error("Error fetching skills: ", error);
       }
     });
   }

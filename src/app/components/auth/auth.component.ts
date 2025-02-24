@@ -5,14 +5,14 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login-signup',
+  selector: 'app-auth',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './login-signup.component.html',
-  styleUrl: './login-signup.component.scss'
+  templateUrl: './auth.component.html',
+  styleUrl: './auth.component.scss'
 })
 
-export class LoginSignupComponent {
+export class AuthComponent {
   isNewAccountSelected = false
   isLoginOpen!: boolean;
   accountForm = new FormGroup({

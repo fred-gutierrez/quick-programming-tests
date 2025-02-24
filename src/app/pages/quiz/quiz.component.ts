@@ -4,13 +4,13 @@ import quizData from "../../data/quizData.json"
 import { get } from 'node:http';
 
 @Component({
-  selector: 'app-quizpage',
+  selector: 'app-quiz',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './quizpage.component.html',
-  styleUrl: './quizpage.component.scss'
+  templateUrl: './quiz.component.html',
+  styleUrl: './quiz.component.scss'
 })
-export class QuizpageComponent {
+export class QuizComponent {
   quizData: any[] = quizData;
   currentQuestionIndex: number = 0;
   quizSkillName: string = "JavaScript";

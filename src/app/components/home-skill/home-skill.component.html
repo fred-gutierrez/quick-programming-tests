@@ -1,0 +1,22 @@
+<section class="section-container">
+  <ng-container *ngIf="skills">
+    <div class="card" *ngFor="let item of skills">
+      <h1 class="name">{{ item.skill_name }}</h1>
+      <div class="stats-container">
+        <p>Completed <b>{{ item.completed }}</b> times</p>
+        <p>Best technical score: <b>{{ item.bestTechnicalScore }}</b>.</p>
+        <p>Best conceptual score: <b>{{ item.bestConceptualScore }}</b>.</p>
+        <p>Correct unique questions: <b>{{ item.correctUniqueQuestions }}%</b>.</p>
+      </div>
+      <div class="button-container">
+        <a class="button button-conceptual" href="/quiz">Conceptual Test</a>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!skills.length">
+    <div class="server-error">
+      Server had an error, try reloading.
+    </div>
+  </ng-container>
+</section>
