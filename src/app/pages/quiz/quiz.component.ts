@@ -1,26 +1,26 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import quizData from "../../data/quizData.json"
-import { get } from 'node:http';
+import quizData from '../../data/quizData.json';
+import { QuizResultsComponent } from '../../components/quiz-results/quiz-results.component';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, QuizResultsComponent],
   templateUrl: './quiz.component.html',
-  styleUrl: './quiz.component.scss'
+  styleUrl: './quiz.component.scss',
 })
 export class QuizComponent {
   quizData: any[] = quizData;
   currentQuestionIndex: number = 0;
-  quizSkillName: string = "JavaScript";
+  quizSkillName: string = 'JavaScript';
   selectedAnswers: number[] = [];
   showScore: boolean = false;
   finalScore: number = 0;
 
   // Executes when initialized
   ngOnInit(): void {
-    this.randomizeAndLimitQuestions()
+    this.randomizeAndLimitQuestions();
   }
 
   randomizeAndLimitQuestions(): void {
@@ -34,7 +34,7 @@ export class QuizComponent {
 
   // Getter to count non-null selected answer
   get selectedAnswersCount(): number {
-    return this.selectedAnswers.filter(answer => answer !== null).length;
+    return this.selectedAnswers.filter((answer) => answer !== null).length;
   }
 
   selectOption(isCorrect: boolean, optionIndex: number): void {
@@ -44,12 +44,15 @@ export class QuizComponent {
   // PAGINATION
   previousQuestion(): void {
     if (this.currentQuestionIndex > 0) {
-      this.currentQuestionIndex--
+      this.currentQuestionIndex--;
     }
   }
   // Question Specific
   selectQuestionIndex(selectedQuestionIndex: number): void {
-    if (this.currentQuestionIndex >= 0 && selectedQuestionIndex < this.quizData.length) {
+    if (
+      this.currentQuestionIndex >= 0 &&
+      selectedQuestionIndex < this.quizData.length
+    ) {
       this.currentQuestionIndex = selectedQuestionIndex;
     }
   }
@@ -65,12 +68,15 @@ export class QuizComponent {
     this.finalScore = this.quizData.reduce((score, question, index) => {
       const selectedOptionIndex = this.selectedAnswers[index];
 
-      if (selectedOptionIndex !== -1 && question.options[selectedOptionIndex].correct) {
-        return score + 10
+      if (
+        selectedOptionIndex !== -1 &&
+        question.options[selectedOptionIndex].correct
+      ) {
+        return score + 10;
       }
 
-      return score
-    }, 0)
+      return score;
+    }, 0);
     this.showScore = true;
   }
   // SCORE/RESULT END

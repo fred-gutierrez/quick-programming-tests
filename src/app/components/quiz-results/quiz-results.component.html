@@ -1,0 +1,28 @@
+<div class="results-container">
+  <h2>Quiz Results</h2>
+  <div class="score">
+    <h3>Final Score: {{ finalScore }} / {{ quizData.length * 10 }}</h3>
+  </div>
+
+  <div class="incorrect-answers" *ngIf="incorrectAnswers.length > 0">
+    <h3>Questions to Review:</h3>
+    <div class="question-card" *ngFor="let q of incorrectAnswers">
+      <p class="question">{{ q.question }}</p>
+      <div class="answers">
+        <div class="answer wrong">
+          <span class="label">Your Answer:</span>
+          <span class="value">{{ q.userAnswer }}</span>
+        </div>
+        <div class="answer correct">
+          <span class="label">Correct Answer:</span>
+          <span class="value">{{ q.correctAnswer }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="perfect-score" *ngIf="incorrectAnswers.length === 0">
+    <h3>Perfect Score! 🎉</h3>
+    <p>You got all questions correct!</p>
+  </div>
+</div>

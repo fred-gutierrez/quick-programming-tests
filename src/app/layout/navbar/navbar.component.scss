@@ -1,17 +1,38 @@
+$grey-highlight: #cecece;
+
 header {
   display: flex;
   justify-content: space-between;
-  padding-top: 2em;
-  padding-bottom: 2em;
-  background-color: #161616;
-  position: sticky;
+  align-items: center;
+  padding: 2rem;
+  background-color: #222222;
+  border-bottom: 3px solid #555555;
 }
 
 .brand {
   font-weight: bold;
+  color: #fff;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    color: $grey-highlight;
+    transform: translateY(-2px);
+  }
 }
 
 .login {
   cursor: pointer;
   font-weight: 500;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: $grey-highlight;
+    color: #000;
+    transform: translateY(-2px);
+  }
 }
