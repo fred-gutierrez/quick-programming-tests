@@ -1,3 +1,5 @@
+$grey-highlight: #cecece;
+
 .results-container {
   max-width: 800px;
   margin: 2rem auto;
@@ -84,6 +86,30 @@
     p {
       color: #fff;
       font-size: 1.2em;
+    }
+  }
+
+  .return-container {
+    display: flex;
+    justify-content: right;
+
+    .return-btn {
+      padding: 1rem 1.5rem;
+      font-size: 1.1em;
+      font-weight: 600;
+      background-color: $grey-highlight;
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      transition: all 0.3s ease;
+
+      &:hover,
+      &:focus {
+        background-color: $grey-highlight;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
     }
   }
 }

@@ -7,6 +7,10 @@ header {
   padding: 2rem;
   background-color: #222222;
   border-bottom: 3px solid #555555;
+
+  @media (min-width: 768px) {
+    padding: 2rem 6rem;
+  }
 }
 
 .brand {
