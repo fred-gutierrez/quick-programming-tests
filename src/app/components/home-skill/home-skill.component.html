@@ -1,7 +1,11 @@
+<app-home-skill-search
+  (searchChange)="onSearch($event)"
+></app-home-skill-search>
+
 <section class="section-container">
-  <ng-container *ngIf="skills">
-    <div class="section-inner-container">
-      <div class="card" *ngFor="let item of skills">
+  <div class="section-inner-container">
+    <ng-container *ngIf="filteredSkills">
+      <div class="card" *ngFor="let item of filteredSkills">
         <h1 class="name">{{ item.skill_name }}</h1>
         <div class="stats-container">
           <p>
@@ -24,10 +28,15 @@
           <a class="button button-conceptual" href="/quiz">Conceptual Test</a>
         </div>
       </div>
-    </div>
-  </ng-container>
+    </ng-container>
 
-  <ng-container *ngIf="!skills.length">
-    <div class="server-error">Server had an error, try reloading.</div>
-  </ng-container>
+    <ng-container *ngIf="!filteredSkills.length">
+      <div class="server-error" *ngIf="!searchTerm">
+        Server had an error, try reloading.
+      </div>
+      <div class="server-error" *ngIf="searchTerm">
+        No skills found matching "{{ searchTerm }}"
+      </div>
+    </ng-container>
+  </div>
 </section>
