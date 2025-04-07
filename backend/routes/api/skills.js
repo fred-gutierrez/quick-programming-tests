@@ -1,13 +1,13 @@
-const router = require("express").Router()
-const Skill = require("../../models/skill.model")
+const router = require("express").Router();
+const Skill = require("../../models/skill.model");
 
 router.get("/", async (req, res) => {
   try {
     const skills = await Skill.find();
-    res.send(skills)
+    res.send(skills);
   } catch {
-    res.status(500).json({ error: error.message })
+    res.status(500).json({ error: error.message });
   }
-})
+});
 
 module.exports = router;
