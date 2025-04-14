@@ -25,7 +25,11 @@
           </p>
         </div>
         <div class="button-container">
-          <a class="button button-conceptual" href="/quiz">Conceptual Test</a>
+          <a
+            class="button button-conceptual"
+            [routerLink]="['/quiz', item.skill_id, 'conceptual']"
+            >Conceptual Test</a
+          >
         </div>
       </div>
     </ng-container>

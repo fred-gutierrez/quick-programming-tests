@@ -1,17 +1,16 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
-
 export class SkillsService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  private baseUrl = 'http://localhost:3000'
+  private baseUrl = 'http://localhost:3000';
 
-  getAll(): Observable<any[]> {
-    return this.httpClient.get<any[]>(`${this.baseUrl}/api/skills`)
+  getAllSkills(): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.baseUrl}/api/skills`);
   }
 }

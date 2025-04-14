@@ -1,7 +1,15 @@
 <section>
   <h1>{{ quizSkillName }} Conceptual Test</h1>
 
-  <ng-container *ngIf="quizData && quizData.length > 0 && showScore === false">
+  <div *ngIf="isLoading" class="loading">Loading questions...</div>
+
+  <div *ngIf="!isLoading && quizData.length === 0" class="no-questions">
+    No questions available for this skill.
+  </div>
+
+  <ng-container
+    *ngIf="!isLoading && quizData && quizData.length > 0 && showScore === false"
+  >
     <div class="quiz-container">
       <div class="quiz-number-complete-container">
         <h2 class="quiz-number-title">
