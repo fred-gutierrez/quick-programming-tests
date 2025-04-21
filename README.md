@@ -2,7 +2,7 @@
 
 Sup! This is a new project I'm making to help myself and others with some quick programming tests, either to quickly reinforce our knowledge or quickly practice before an interview.
 
-## Tech Stack
+## TECH STACK
 
 ### Frontend:
 - Angular
