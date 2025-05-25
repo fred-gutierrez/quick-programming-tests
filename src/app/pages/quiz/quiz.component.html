@@ -24,9 +24,10 @@
           </button>
         </div>
       </div>
-      <h3 class="quiz-question">
-        {{ quizData[currentQuestionIndex].question }}
-      </h3>
+      <h3
+        class="quiz-question"
+        [innerHTML]="quizData[currentQuestionIndex].question"
+      ></h3>
       <div class="quiz-options-container">
         <button
           type="button"
@@ -37,9 +38,8 @@
           "
           (click)="selectOption(option.correct, i)"
           [ngClass]="{ selected: selectedAnswers[currentQuestionIndex] === i }"
-        >
-          {{ option.option }}
-        </button>
+          [innerHTML]="option.option"
+        ></button>
       </div>
     </div>
 

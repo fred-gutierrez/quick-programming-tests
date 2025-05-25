@@ -1,5 +1,21 @@
 $grey-highlight: #cecece;
 
+// CODE must ALWAYS be enclosed in :host and ::ng-deep to allow styling of dynamic content like html from the database
+:host ::ng-deep {
+  code {
+    background-color: #333333;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #0f0;
+    font-family: monospace;
+    font-weight: normal;
+    font-size: 1em;
+    border: 1px solid #444;
+    display: inline-block;
+    line-height: 1.4;
+  }
+}
+
 section {
   max-width: 800px;
   margin: 2rem auto;

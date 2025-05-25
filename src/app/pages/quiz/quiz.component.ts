@@ -3,6 +3,17 @@ import { CommonModule } from '@angular/common';
 import { QuizResultsComponent } from '../../components/quiz-results/quiz-results.component';
 import { QuestionsService } from '../../services/questions.service';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
+interface QuizOption {
+  option: string;
+  correct: boolean;
+}
+
+interface QuizQuestion {
+  question: string;
+  options: QuizOption[];
+}
 
 @Component({
   selector: 'app-quiz',
@@ -22,22 +33,39 @@ export class QuizComponent implements OnInit {
 
   constructor(
     private questionsService: QuestionsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
   ) {}
+
+  private sanitizeContent(content: string): SafeHtml {
+    // First, escape all HTML tags except <code> and </code>
+    let sanitized = content.replace(/<(?!\/?code)[^>]*>/g, (match) => {
+      return match.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    });
+
+    // Then allow <code> and </code> tags to be rendered
+    return this.sanitizer.bypassSecurityTrustHtml(sanitized);
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const skill_id = params['skill_id'];
       const type = params['type'] || 'conceptual';
 
-      // console.log('Fetching questions for:', skill_id, type); // Debug log
-
       this.questionsService
         .getQuestionsBySkillAndType(skill_id, type)
         .subscribe({
           next: (questions) => {
-            // console.log('Received questions:', questions); // Debug log
-            this.quizData = this.randomizeAndLimitQuestions(questions);
+            this.quizData = this.randomizeAndLimitQuestions(questions).map(
+              (question) => ({
+                ...question,
+                question: this.sanitizeContent(question.question),
+                options: question.options.map((option: QuizOption) => ({
+                  ...option,
+                  option: this.sanitizeContent(option.option),
+                })),
+              })
+            );
             this.quizSkillName =
               skill_id === 'html'
                 ? 'HTML'
