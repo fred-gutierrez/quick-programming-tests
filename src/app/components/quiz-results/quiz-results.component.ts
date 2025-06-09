@@ -1,9 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
-interface QuizOption {
-  option: string;
-  correct: boolean;
+interface QuizQuestion {
+  question: SafeHtml;
+  options: {
+    option: SafeHtml;
+    correct: boolean;
+  }[];
 }
 
 @Component({
@@ -15,9 +19,30 @@ interface QuizOption {
 })
 export class QuizResultsComponent {
   // Input properties to receive quiz data from parent component
-  @Input() quizData: any[] = [];
+  @Input() quizData: QuizQuestion[] = [];
   @Input() selectedAnswers: (number | undefined)[] = [];
   @Input() finalScore: number = 0;
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  private sanitizeContent(content: string | null | undefined): SafeHtml {
+    if (!content) {
+      return this.sanitizer.bypassSecurityTrustHtml('');
+    }
+
+    try {
+      // First, escape all HTML tags except <code> and </code>
+      let sanitized = content.replace(/<(?!\/?code)[^>]*>/g, (match) => {
+        return match.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      });
+
+      // Then allow <code> and </code> tags to be rendered
+      return this.sanitizer.bypassSecurityTrustHtml(sanitized);
+    } catch (error) {
+      console.error('Error sanitizing content:', error);
+      return this.sanitizer.bypassSecurityTrustHtml(content);
+    }
+  }
 
   // Getter to calculate and return incorrect answers
   get incorrectAnswers() {
@@ -33,16 +58,17 @@ export class QuizResultsComponent {
         }
 
         // Get the user's answer text
-        let userAnswer = 'Not answered';
+        let userAnswer: SafeHtml =
+          this.sanitizer.bypassSecurityTrustHtml('Not answered');
         if (selectedOptionIndex !== undefined) {
           userAnswer = question.options[selectedOptionIndex].option;
         }
 
         // Find the correct answer from the options
-        const correctOption = question.options.find(
-          (opt: QuizOption) => opt.correct
-        );
-        const correctAnswer = correctOption ? correctOption.option : '';
+        const correctOption = question.options.find((opt) => opt.correct);
+        const correctAnswer = correctOption
+          ? correctOption.option
+          : this.sanitizer.bypassSecurityTrustHtml('');
 
         return {
           question: question.question,

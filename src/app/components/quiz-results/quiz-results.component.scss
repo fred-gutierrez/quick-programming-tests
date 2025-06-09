@@ -27,19 +27,20 @@ $grey-highlight: #cecece;
   .incorrect-answers {
     h3 {
       margin-bottom: 1.5rem;
-      color: #ff6b6b;
+      color: #fff;
     }
 
     .question-card {
       background-color: #333333;
       border-radius: 10px;
-      padding: 1.5rem;
+      padding: 2rem 1.75rem;
       margin-bottom: 1.5rem;
 
       .question {
         font-size: 1.2em;
         margin-bottom: 1rem;
         color: #fff;
+        font-weight: bold;
       }
 
       .answers {
@@ -53,7 +54,7 @@ $grey-highlight: #cecece;
           gap: 0.5rem;
 
           .label {
-            font-weight: bold;
+            font-weight: 600;
             color: #888;
           }
 
@@ -61,12 +62,18 @@ $grey-highlight: #cecece;
             color: #fff;
           }
 
-          &.wrong .value {
-            color: #ff6b6b;
+          &.wrong {
+            .value,
+            code {
+              color: #ff6961 !important;
+            }
           }
 
-          &.correct .value {
-            color: #4ecdc4;
+          &.correct {
+            .value,
+            code {
+              color: #6fe4ff !important;
+            }
           }
         }
       }

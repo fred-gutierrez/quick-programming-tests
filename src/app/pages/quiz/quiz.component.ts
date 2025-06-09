@@ -89,7 +89,7 @@ export class QuizComponent implements OnInit {
     // Shuffle the questions
     const shuffled = [...questions].sort(() => 0.5 - Math.random());
     // Limit to 10 questions
-    return shuffled.slice(0, 10);
+    return shuffled.slice(0, 7);
   }
 
   // Getter to count non-null selected answer
@@ -125,18 +125,21 @@ export class QuizComponent implements OnInit {
 
   // SCORE/RESULT
   calculateScore(): void {
-    this.finalScore = this.quizData.reduce((score, question, index) => {
+    const rawScore = this.quizData.reduce((score, question, index) => {
       const selectedOptionIndex = this.selectedAnswers[index];
 
       if (
         selectedOptionIndex !== -1 &&
         question.options[selectedOptionIndex].correct
       ) {
-        return score + 10;
+        return score + 1;
       }
 
       return score;
     }, 0);
+
+    // Normalize score to be out of 10
+    this.finalScore = Math.round((rawScore / this.quizData.length) * 100);
     this.showScore = true;
   }
   // SCORE/RESULT END
