@@ -28,6 +28,7 @@ $grey-highlight: #cecece;
     h3 {
       margin-bottom: 1.5rem;
       color: #fff;
+      font-size: 1.2em;
     }
 
     .question-card {
@@ -37,7 +38,7 @@ $grey-highlight: #cecece;
       margin-bottom: 1.5rem;
 
       .question {
-        font-size: 1.2em;
+        font-size: 1.1em;
         margin-bottom: 1rem;
         color: #fff;
         font-weight: bold;
@@ -80,22 +81,6 @@ $grey-highlight: #cecece;
     }
   }
 
-  .perfect-score {
-    text-align: center;
-    padding: 2rem;
-
-    h3 {
-      color: #4ecdc4;
-      font-size: 1.8em;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      color: #fff;
-      font-size: 1.2em;
-    }
-  }
-
   .return-container {
     display: flex;
     justify-content: right;
@@ -116,6 +101,80 @@ $grey-highlight: #cecece;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         cursor: pointer;
+      }
+    }
+  }
+}
+
+.animated-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .score-ring-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .score-ring {
+      width: 120px;
+      height: 120px;
+      transform: rotate(-90deg);
+      margin-bottom: 0.5rem;
+
+      &-bg {
+        fill: none;
+        stroke: #444;
+        stroke-width: 12;
+      }
+      &-fg {
+        fill: none;
+        stroke-width: 12;
+        stroke-linecap: round;
+        transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 2, 0.6, 1),
+          stroke 0.3s;
+        filter: drop-shadow(0 0 8px #00ff9d88);
+
+        &.score-green {
+          stroke: #00ff9d;
+          filter: drop-shadow(0 0 8px #00ff9d88);
+        }
+        &.score-yellow {
+          stroke: #ffe066;
+          filter: drop-shadow(0 0 8px #ffe06688);
+        }
+        &.score-red {
+          stroke: #ff4d4f;
+          filter: drop-shadow(0 0 8px #ff4d4f88);
+        }
+      }
+    }
+
+    .score-center-text {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.4em;
+      font-weight: bold;
+      display: flex;
+      align-items: flex-end;
+
+      &.score-green {
+        color: #00ff9d;
+        text-shadow: 0 0 8px #00ff9d44, 0 2px 8px #000a;
+      }
+      &.score-yellow {
+        color: #ffe066;
+        text-shadow: 0 0 8px #ffe06644, 0 2px 8px #000a;
+      }
+      &.score-red {
+        color: #ff4d4f;
+        text-shadow: 0 0 8px #ff4d4f44, 0 2px 8px #000a;
       }
     }
   }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
@@ -17,13 +17,42 @@ interface QuizQuestion {
   templateUrl: './quiz-results.component.html',
   styleUrl: './quiz-results.component.scss',
 })
-export class QuizResultsComponent {
+export class QuizResultsComponent implements OnChanges {
   // Input properties to receive quiz data from parent component
   @Input() quizData: QuizQuestion[] = [];
   @Input() selectedAnswers: (number | undefined)[] = [];
   @Input() finalScore: number = 0;
 
+  animatedScore = 0;
+  animationInterval: any;
+
   constructor(private sanitizer: DomSanitizer) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['finalScore']) {
+      this.animateScore();
+    }
+  }
+
+  animateScore() {
+    if (this.animationInterval) {
+      clearInterval(this.animationInterval);
+    }
+    this.animatedScore = 0;
+    const target = this.finalScore;
+    const duration = 1200; // ms
+    const stepTime = 20;
+    const steps = Math.ceil(duration / stepTime);
+    let currentStep = 0;
+    this.animationInterval = setInterval(() => {
+      currentStep++;
+      this.animatedScore = Math.round((target * currentStep) / steps);
+      if (currentStep >= steps) {
+        this.animatedScore = target;
+        clearInterval(this.animationInterval);
+      }
+    }, stepTime);
+  }
 
   private sanitizeContent(content: string | null | undefined): SafeHtml {
     if (!content) {
@@ -78,5 +107,15 @@ export class QuizResultsComponent {
         };
       })
       .filter((q) => !q.isCorrect);
+  }
+
+  get scoreRingColorClass(): string {
+    if (this.animatedScore >= 80) {
+      return 'score-green';
+    } else if (this.animatedScore >= 50) {
+      return 'score-yellow';
+    } else {
+      return 'score-red';
+    }
   }
 }
