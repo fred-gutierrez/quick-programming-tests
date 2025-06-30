@@ -15,11 +15,23 @@
         <h2 class="quiz-number-title">
           Question {{ currentQuestionIndex + 1 }}
         </h2>
-        <div>
-          <span class="quiz-counter">
-            {{ selectedAnswersCount }}/{{ selectedAnswers.length }}</span
+        <div class="progress-section">
+          <div class="progress-container">
+            <div
+              class="progress-bar"
+              [style.width.%]="(selectedAnswersCount / quizData.length) * 100"
+            ></div>
+          </div>
+          <div class="counter-section">
+            <span class="quiz-counter" [ngClass]="getCounterClass()">
+              {{ selectedAnswersCount }}/{{ quizData.length }}
+            </span>
+          </div>
+          <button
+            class="quiz-complete-button"
+            (click)="calculateScore()"
+            [disabled]="selectedAnswersCount < quizData.length"
           >
-          <button class="quiz-complete-button" (click)="calculateScore()">
             Complete
           </button>
         </div>

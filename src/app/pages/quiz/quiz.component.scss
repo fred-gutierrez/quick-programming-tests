@@ -45,6 +45,61 @@ h1 {
       color: #fff;
     }
 
+    .progress-section {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      .progress-container {
+        width: 120px;
+        height: 6px;
+        background-color: #444;
+        border-radius: 3px;
+        overflow: hidden;
+
+        @media (max-width: 767px) {
+          display: none;
+        }
+
+        .progress-bar {
+          height: 100%;
+          background: linear-gradient(90deg, #666 0%, #999 50%, #cecece 100%);
+          border-radius: 3px;
+          transition: width 0.3s ease;
+        }
+      }
+
+      .counter-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+
+        .quiz-counter {
+          font-weight: 600;
+          font-size: 1.1em;
+          transition: color 0.3s ease;
+
+          &.counter-starting {
+            color: #999;
+          }
+          &.counter-halfway {
+            color: #cecece;
+          }
+          &.counter-full {
+            color: #fff;
+          }
+        }
+
+        .progress-text {
+          font-size: 0.8em;
+          color: #888;
+          font-weight: 500;
+          text-align: center;
+        }
+      }
+    }
+
     .quiz-complete-button {
       padding: 0.8rem 1.5rem;
       font-size: 1.1em;
@@ -67,16 +122,12 @@ h1 {
 
       &:disabled {
         background-color: #666;
+        color: #999;
         cursor: not-allowed;
         transform: none;
         box-shadow: none;
+        opacity: 0.6;
       }
-    }
-
-    .quiz-counter {
-      margin-right: 1rem;
-      color: #888;
-      font-weight: 500;
     }
   }
 

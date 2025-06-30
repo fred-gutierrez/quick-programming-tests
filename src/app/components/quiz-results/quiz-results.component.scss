@@ -87,17 +87,18 @@ $grey-highlight: #cecece;
 
     .return-btn {
       padding: 1rem 1.5rem;
-      font-size: 1.1em;
+      font-size: 1em;
       font-weight: 600;
-      background-color: $grey-highlight;
       border: none;
       border-radius: 10px;
-      color: #000;
+      background-color: #444;
+      color: #fff;
       transition: all 0.3s ease;
 
       &:hover,
       &:focus {
         background-color: $grey-highlight;
+        color: #000;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         cursor: pointer;
@@ -137,19 +138,15 @@ $grey-highlight: #cecece;
         stroke-linecap: round;
         transition: stroke-dashoffset 0.5s cubic-bezier(0.4, 2, 0.6, 1),
           stroke 0.3s;
-        filter: drop-shadow(0 0 8px #00ff9d88);
 
         &.score-green {
           stroke: #00ff9d;
-          filter: drop-shadow(0 0 8px #00ff9d88);
         }
         &.score-yellow {
           stroke: #ffe066;
-          filter: drop-shadow(0 0 8px #ffe06688);
         }
         &.score-red {
           stroke: #ff4d4f;
-          filter: drop-shadow(0 0 8px #ff4d4f88);
         }
       }
     }

@@ -85,6 +85,13 @@ export class QuizComponent implements OnInit {
     });
   }
 
+  getCounterClass(): string {
+    const progress = (this.selectedAnswersCount / this.quizData.length) * 100;
+    if (progress >= 80) return 'counter-full';
+    if (progress >= 42) return 'counter-halfway';
+    return 'counter-starting';
+  }
+
   randomizeAndLimitQuestions(questions: any[]): any[] {
     // Shuffle the questions
     const shuffled = [...questions].sort(() => 0.5 - Math.random());
