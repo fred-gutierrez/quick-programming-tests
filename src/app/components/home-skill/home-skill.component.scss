@@ -50,7 +50,6 @@ $grey-highlight: #cecece;
   &:hover,
   &:focus {
     border-color: $grey-highlight;
-    transform: translateY(-2px);
   }
 }
 
@@ -59,12 +58,12 @@ $grey-highlight: #cecece;
   grid-template-columns: 100% auto;
   gap: 10px;
 
-  a {
+  .button {
     border: none;
-    padding: 20px;
+    padding: 20px 10px;
     font-weight: bold;
-    font-size: 16px;
-    border-radius: 15px;
+    font-size: 1em;
+    border-radius: 10px;
     cursor: pointer;
     text-align: center;
     transition: all 0.3s ease;
@@ -72,7 +71,6 @@ $grey-highlight: #cecece;
     &:hover,
     &:focus {
       transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -90,10 +88,12 @@ $grey-highlight: #cecece;
   .button-technical {
     background-color: $grey-highlight;
     color: #000;
+    pointer-events: none;
 
     &:hover,
     &:focus {
-      background-color: darken($grey-highlight, 10%);
+      background-color: #444;
+      color: #fff;
     }
   }
 }

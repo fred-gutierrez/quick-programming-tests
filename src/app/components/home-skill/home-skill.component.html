@@ -28,8 +28,14 @@
           <a
             class="button button-conceptual"
             [routerLink]="['/quiz', item.skill_id, 'conceptual']"
-            >Conceptual Test</a
           >
+            Start {{ item.skill_name }} Test</a
+          >
+          <!-- <a
+            class="button button-technical"
+            [routerLink]="['/quiz', item.skill_id, 'technical']"
+            >Technical Test</a
+          > -->
         </div>
       </div>
     </ng-container>

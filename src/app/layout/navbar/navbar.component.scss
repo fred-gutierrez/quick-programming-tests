@@ -4,12 +4,12 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   background-color: #222222;
   border-bottom: 3px solid #555555;
 
   @media (min-width: 768px) {
-    padding: 2rem 6rem;
+    padding: 1.5rem 6rem;
   }
 }
 
@@ -37,5 +37,27 @@ header {
     background-color: $grey-highlight;
     color: #000;
     transform: translateY(-2px);
+  }
+}
+
+.social {
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+  background-size: 26px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgb(53, 53, 53);
+  border-radius: 5px;
+  border: 2px solid #444;
+  transition: border-color 0.3s;
+
+  &:hover,
+  &:focus {
+    border-color: $grey-highlight;
+  }
+
+  &.social-github {
+    background-image: url(/assets/github.svg);
   }
 }
