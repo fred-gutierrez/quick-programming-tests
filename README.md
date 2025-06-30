@@ -6,7 +6,7 @@ Sup! This is a new project I'm making to help myself and others with some quick 
 
 ### Frontend:
 - Angular
-- Sass
+- Sass (SCSS)
 
 ### Backend:
 - MongoDB
