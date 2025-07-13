@@ -10,10 +10,10 @@ interface QuizOption {
   correct: boolean;
 }
 
-interface QuizQuestion {
-  question: string;
-  options: QuizOption[];
-}
+// interface QuizQuestion {
+//   question: string;
+//   options: QuizOption[];
+// }
 
 @Component({
   selector: 'app-quiz',
@@ -51,6 +51,7 @@ export class QuizComponent implements OnInit {
     this.route.params.subscribe((params) => {
       const skill_id = params['skill_id'];
       const type = params['type'] || 'conceptual';
+      const skill_name = decodeURIComponent(params['skill_name'] || '');
 
       this.questionsService
         .getQuestionsBySkillAndType(skill_id, type)
@@ -67,13 +68,8 @@ export class QuizComponent implements OnInit {
               })
             );
             this.quizSkillName =
-              skill_id === 'html'
-                ? 'HTML'
-                : skill_id === 'css'
-                ? 'CSS'
-                : skill_id === 'javascript'
-                ? 'JavaScript'
-                : skill_id.charAt(0).toUpperCase() + skill_id.slice(1);
+              skill_name ||
+              skill_id.charAt(0).toUpperCase() + skill_id.slice(1);
             this.selectedAnswers = new Array(this.quizData.length).fill(null);
             this.isLoading = false;
           },
@@ -95,7 +91,7 @@ export class QuizComponent implements OnInit {
   randomizeAndLimitQuestions(questions: any[]): any[] {
     // Shuffle the questions
     const shuffled = [...questions].sort(() => 0.5 - Math.random());
-    // Limit to 10 questions
+    // Limit to 7 questions
     return shuffled.slice(0, 7);
   }
 

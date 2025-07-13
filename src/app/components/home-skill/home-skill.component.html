@@ -5,39 +5,28 @@
 <section class="section-container">
   <div class="section-inner-container">
     <ng-container *ngIf="filteredSkills">
-      <div class="card" *ngFor="let item of filteredSkills">
-        <h1 class="name">{{ item.skill_name }}</h1>
-        <div class="stats-container">
-          <p>
-            Completed <b class="muted">{{ item.completed }}INCOMING</b> times
-          </p>
-          <p>
-            Best technical score:
-            <b class="muted">{{ item.bestTechnicalScore }}INCOMING</b>
-          </p>
-          <p>
-            Best conceptual score:
-            <b class="muted">{{ item.bestConceptualScore }}INCOMING</b>
-          </p>
-          <p>
-            Correct unique questions:
-            <b class="muted">{{ item.correctUniqueQuestions }}INCOMING%</b>
-          </p>
-        </div>
+      <!-- <div class="card" *ngFor="let item of filteredSkills">
+        <h2 class="skill-name">{{ item.skill_name }}</h2>
         <div class="button-container">
           <a
             class="button button-conceptual"
-            [routerLink]="['/quiz', item.skill_id, 'conceptual']"
+            [routerLink]="[
+              '/quiz',
+              item.skill_id,
+              'conceptual',
+              item.skill_name
+            ]"
           >
             Start {{ item.skill_name }} Test</a
           >
-          <!-- <a
-            class="button button-technical"
-            [routerLink]="['/quiz', item.skill_id, 'technical']"
-            >Technical Test</a
-          > -->
         </div>
-      </div>
+      </div> -->
+      <a
+        *ngFor="let item of filteredSkills"
+        class="card-button"
+        [routerLink]="['/quiz', item.skill_id, 'conceptual', item.skill_name]"
+        ><p>{{ item.skill_name }}</p></a
+      >
     </ng-container>
 
     <ng-container *ngIf="!filteredSkills.length">

@@ -33,67 +33,143 @@ $grey-highlight: #cecece;
   }
 }
 
-.card {
+.card-button {
+  position: relative;
+  min-height: fit-content;
+  min-width: fit-content;
   background-color: #333333;
+  width: 150px;
+  height: 150px;
   border-radius: 10px;
-  height: fit-content;
-  padding: 20px;
   border: 2px solid #444;
   transition: all 0.3s ease;
 
-  .stats-container {
-    padding-top: 8px;
-    padding-bottom: 15px;
-    line-height: 24px;
+  p {
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    font-size: 1.125em;
+    transition: all 0.3s;
+    color: #fff !important;
+  }
+
+  &:before,
+  &:after {
+    color: #888;
+    font-weight: 500;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s;
+    top: 50%;
+  }
+
+  // MOBILE ONLY
+  @media (max-width: 767px) {
+    &:before,
+    &:after {
+      opacity: 1;
+    }
+    &:before {
+      top: 25%;
+    }
+    &:after {
+      top: 75%;
+    }
+  }
+  // MOBILE ONLY END
+
+  &:before {
+    content: "Take";
+  }
+
+  &:after {
+    content: "Quiz";
   }
 
   &:hover,
   &:focus {
     border-color: $grey-highlight;
-  }
-}
 
-.button-container {
-  display: grid;
-  grid-template-columns: 100% auto;
-  gap: 10px;
-
-  .button {
-    border: none;
-    padding: 20px 10px;
-    font-weight: bold;
-    font-size: 1em;
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s ease;
-
-    &:hover,
-    &:focus {
-      transform: translateY(-2px);
+    p {
+      font-size: 1.25em;
     }
-  }
 
-  .button-conceptual {
-    background-color: #444;
-    color: #fff;
-
-    &:hover,
-    &:focus {
-      background-color: $grey-highlight;
-      color: #000;
+    &:before {
+      top: 25%;
+      opacity: 1;
     }
-  }
-
-  .button-technical {
-    background-color: $grey-highlight;
-    color: #000;
-    pointer-events: none;
-
-    &:hover,
-    &:focus {
-      background-color: #444;
-      color: #fff;
+    &:after {
+      top: 75%;
+      opacity: 1;
     }
   }
 }
+
+// .card {
+//   background-color: #333333;
+//   border-radius: 10px;
+//   height: fit-content;
+//   padding: 20px;
+//   border: 2px solid #444;
+//   transition: all 0.3s ease;
+
+//   .stats-container {
+//     padding-top: 8px;
+//     padding-bottom: 15px;
+//     line-height: 24px;
+//   }
+
+//   &:hover,
+//   &:focus {
+//     border-color: $grey-highlight;
+//   }
+// }
+
+// .button-container {
+//   display: grid;
+//   grid-template-columns: 100% auto;
+//   gap: 10px;
+
+//   .button {
+//     border: none;
+//     padding: 20px 10px;
+//     font-weight: bold;
+//     font-size: 1em;
+//     border-radius: 10px;
+//     cursor: pointer;
+//     text-align: center;
+//     transition: all 0.3s ease;
+
+//     &:hover,
+//     &:focus {
+//       transform: translateY(-2px);
+//     }
+//   }
+
+//   .button-conceptual {
+//     background-color: #444;
+//     color: #fff;
+
+//     &:hover,
+//     &:focus {
+//       background-color: $grey-highlight;
+//       color: #000;
+//     }
+//   }
+
+//   .button-technical {
+//     background-color: $grey-highlight;
+//     color: #000;
+//     pointer-events: none;
+
+//     &:hover,
+//     &:focus {
+//       background-color: #444;
+//       color: #fff;
+//     }
+//   }
+// }
