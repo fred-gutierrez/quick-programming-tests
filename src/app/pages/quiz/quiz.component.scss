@@ -1,4 +1,4 @@
-$grey-highlight: #cecece;
+$light-grey-highlight: #cecece;
 
 // CODE must ALWAYS be enclosed in :host and ::ng-deep to allow styling of dynamic content like html from the database
 :host ::ng-deep {
@@ -104,7 +104,7 @@ h1 {
       padding: 0.8rem 1.5rem;
       font-size: 1.1em;
       font-weight: 600;
-      background-color: $grey-highlight;
+      background-color: $light-grey-highlight;
       border: none;
       border-radius: 10px;
       color: #000;
@@ -112,7 +112,7 @@ h1 {
 
       &:hover,
       &:focus {
-        background-color: $grey-highlight;
+        background-color: $light-grey-highlight;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         cursor: pointer;
@@ -160,15 +160,15 @@ h1 {
       &:hover,
       &:focus {
         background-color: #444;
-        border-color: $grey-highlight;
+        border-color: $light-grey-highlight;
         cursor: pointer;
         transform: translateX(5px);
       }
 
       &.selected {
-        background-color: $grey-highlight;
+        background-color: $light-grey-highlight;
         color: #000;
-        border-color: $grey-highlight;
+        border-color: $light-grey-highlight;
         transform: translateX(5px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
@@ -202,14 +202,14 @@ h1 {
     &:hover,
     &:focus {
       background-color: #444;
-      border-color: $grey-highlight;
+      border-color: $light-grey-highlight;
       transform: translateY(-2px);
     }
 
     &.active {
-      background-color: $grey-highlight;
+      background-color: $light-grey-highlight;
       color: #000;
-      border-color: $grey-highlight;
+      border-color: $light-grey-highlight;
     }
 
     &.number {

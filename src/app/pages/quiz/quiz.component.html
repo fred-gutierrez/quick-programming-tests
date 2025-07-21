@@ -49,7 +49,11 @@
             let i = index
           "
           (click)="selectOption(option.correct, i)"
-          [ngClass]="{ selected: selectedAnswers[currentQuestionIndex] === i }"
+          [ngClass]="{
+            selected:
+              selectedAnswers[currentQuestionIndex] !== null &&
+              selectedAnswers[currentQuestionIndex] === i
+          }"
           [innerHTML]="option.option"
         ></button>
       </div>

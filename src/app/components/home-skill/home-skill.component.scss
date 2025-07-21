@@ -1,4 +1,4 @@
-$grey-highlight: #cecece;
+$grey-highlight: #999;
 
 .section-container {
   position: relative;
@@ -41,7 +41,7 @@ $grey-highlight: #cecece;
   width: 150px;
   height: 150px;
   border-radius: 10px;
-  border: 2px solid #444;
+  border: 3px solid #444;
   transition: all 0.3s ease;
 
   p {

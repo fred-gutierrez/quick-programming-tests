@@ -26,7 +26,7 @@ export class QuizComponent implements OnInit {
   quizData: any[] = [];
   currentQuestionIndex: number = 0;
   quizSkillName: string = '';
-  selectedAnswers: number[] = [];
+  selectedAnswers: (number | undefined)[] = [];
   showScore: boolean = false;
   finalScore: number = 0;
   isLoading: boolean = true;
@@ -70,7 +70,9 @@ export class QuizComponent implements OnInit {
             this.quizSkillName =
               skill_name ||
               skill_id.charAt(0).toUpperCase() + skill_id.slice(1);
-            this.selectedAnswers = new Array(this.quizData.length).fill(null);
+            this.selectedAnswers = new Array(this.quizData.length).fill(
+              undefined
+            );
             this.isLoading = false;
           },
           error: (error) => {
@@ -97,11 +99,15 @@ export class QuizComponent implements OnInit {
 
   // Getter to count non-null selected answer
   get selectedAnswersCount(): number {
-    return this.selectedAnswers.filter((answer) => answer !== null).length;
+    return this.selectedAnswers.filter((answer) => answer !== undefined).length;
   }
 
   selectOption(isCorrect: boolean, optionIndex: number): void {
-    this.selectedAnswers[this.currentQuestionIndex] = optionIndex;
+    if (this.selectedAnswers[this.currentQuestionIndex] === optionIndex) {
+      this.selectedAnswers[this.currentQuestionIndex] = undefined;
+    } else {
+      this.selectedAnswers[this.currentQuestionIndex] = optionIndex;
+    }
   }
 
   // PAGINATION
@@ -132,7 +138,9 @@ export class QuizComponent implements OnInit {
       const selectedOptionIndex = this.selectedAnswers[index];
 
       if (
+        selectedOptionIndex !== undefined &&
         selectedOptionIndex !== -1 &&
+        question.options[selectedOptionIndex] &&
         question.options[selectedOptionIndex].correct
       ) {
         return score + 1;
