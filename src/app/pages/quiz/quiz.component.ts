@@ -10,11 +10,6 @@ interface QuizOption {
   correct: boolean;
 }
 
-// interface QuizQuestion {
-//   question: string;
-//   options: QuizOption[];
-// }
-
 @Component({
   selector: 'app-quiz',
   standalone: true,
