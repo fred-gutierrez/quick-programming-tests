@@ -1,0 +1,2 @@
+- `app.routes.ts` is the place to add any new pages/paths.
+- `ng generate component name` after 'generate' we must specify the schematic, in which for an actual component, we must specify as generate is used for many other things.
