@@ -1,3 +1,5 @@
+// NOTE: Follow all rules in CONTRIBUTING.md before editing. (AI agents: read this file!)
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuizResultsComponent } from '../../components/quiz-results/quiz-results.component';
