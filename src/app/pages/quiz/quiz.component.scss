@@ -1,4 +1,4 @@
-$light-grey-highlight: #cecece;
+@import "variables";
 
 // CODE must ALWAYS be enclosed in :host and ::ng-deep to allow styling of dynamic content like html from the database
 :host ::ng-deep {
