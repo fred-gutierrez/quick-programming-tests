@@ -6,9 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SkillsService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
-  private baseUrl = 'http://localhost:3000';
+  // private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'https://quick-programming-tests-backend.onrender.com/'
 
   getAllSkills(): Observable<any[]> {
     return this.httpClient.get<any[]>(`${this.baseUrl}/api/skills`);
