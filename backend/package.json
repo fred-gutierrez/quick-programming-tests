@@ -4,8 +4,8 @@
   "description": "Hello! Welcome to the backend for the QPT project, here you're going to find some notes and boilerplate that can be used to setup the environment and start working on it asap.",
   "main": "app.js",
   "scripts": {
-    "build": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
