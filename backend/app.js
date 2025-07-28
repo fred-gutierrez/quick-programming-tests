@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 // CORS configuration
 app.use(
   cors({
-    origin: ["http://localhost:4200", "https://quick-programming-tests-git-main-fredgutierrezs-projects.vercel.app/"],
+    origin: ["http://localhost:4200", "https://quick-programming-tests.vercel.app/"],
     methods: "GET",
     credentials: true,
   })
@@ -43,7 +43,7 @@ app.use(passport.session());
 
 app.use("/auth", require("./routes/auth.js"));
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server is listening in port ${PORT}`);
-});
+// const PORT = 3000;
+// app.listen(PORT, () => {
+//   console.log(`Server is listening in http://localhost:${PORT}`);
+// });
