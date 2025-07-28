@@ -5,7 +5,7 @@ router.get("/", async (req, res) => {
   try {
     const skills = await Skill.find();
     res.send(skills);
-  } catch {
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
