@@ -18,7 +18,10 @@ app.use(express.urlencoded({ extended: false }));
 // CORS configuration
 app.use(
   cors({
-    origin: ["http://localhost:4200", "https://quick-programming-tests.vercel.app/"],
+    origin: [
+      "http://localhost:4200",
+      "https://quick-programming-tests.vercel.app"
+    ],
     methods: "GET",
     credentials: true,
   })
