@@ -6,7 +6,7 @@
 	<p align="center">
 		Just practice.
     <br />
-    Website: <a href="https://quick-programming-tests.vercel.app/"><strong>https://quick-programming-tests.vercel.app/</strong></a>
+    Website: <a href="https://quick-programming-tests.vercel.app/">https://quick-programming-tests.vercel.app</a>
   </p>
 </p>
 
