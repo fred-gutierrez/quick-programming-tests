@@ -227,6 +227,14 @@ h1 {
 .no-questions {
   text-align: center;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin: 2rem 0;
+
+  .spin-down-text {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #888;
+    font-weight: 400;
+    text-align: center;
+  }
 }

@@ -1,7 +1,13 @@
 <section>
   <h1>{{ quizSkillName }} Conceptual Quiz</h1>
 
-  <div *ngIf="isLoading" class="loading">Loading questions...</div>
+  <div *ngIf="isLoading" class="loading">
+    Loading questions...
+    <p class="spin-down-text">
+      May take up to 30 seconds the first time, due to spin-down after
+      inactivity
+    </p>
+  </div>
 
   <div *ngIf="!isLoading && quizData.length === 0" class="no-questions">
     No questions available for this skill.
